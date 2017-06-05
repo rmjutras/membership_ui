@@ -5,13 +5,27 @@ import {
   Nav,
   NavItem
 } from 'react-bootstrap'
+import { fetchMember } from '../../redux/actions/memberActions'
 import { LinkContainer } from 'react-router-bootstrap'
 
 import UserView from './UserView.jsx'
 
 class Navigation extends Component {
 
+  componentDidMount () {
+    this.props.dispatch(fetchMember())
+  }
+
   render () {
+    let admin = false
+    const memberData = this.props.member.getIn(['user', 'data'], null)
+    if (memberData !== null) {
+      memberData.get('roles').forEach((role) => {
+        if (role.get('role') === 'admin' && role.get('committee') === 'general') {
+          admin = true
+        }
+      })
+    }
     return (
       <Navbar fluid className="navigation">
         <Navbar.Header>
@@ -23,12 +37,13 @@ class Navigation extends Component {
         <Nav className="left-nav">
 
           <LinkContainer to="/members">
-            <NavItem eventKey="members">Membership</NavItem>
+            <NavItem eventKey="members">Member</NavItem>
           </LinkContainer>
-
-          <LinkContainer to="/placeholder">
-            <NavItem eventKey="placeholder">PlaceHolder</NavItem>
-          </LinkContainer>
+          { admin &&
+            <LinkContainer to="/admin">
+              <NavItem eventKey="admin">Admin</NavItem>
+            </LinkContainer>
+          }
 
         </Nav>
 

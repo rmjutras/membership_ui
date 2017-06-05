@@ -31,12 +31,12 @@ const lockOptions = {
 
 function setUser (user) {
   if (user == null) return
-  sessionStorage.setItem('user', JSON.stringify(user))
+  localStorage.setItem('user', JSON.stringify(user))
 }
 
 function setToken (token) {
   if (token == null) return
-  sessionStorage.setItem('id_token', token)
+  localStorage.setItem('id_token', token)
 }
 
 function getUser () {
@@ -75,6 +75,8 @@ function hideLock () {
 }
 
 function lockSuccess (user, token) {
+  setUser(user)
+  setToken(token)
   return {
     type: LOCK_SUCCESS,
     user,

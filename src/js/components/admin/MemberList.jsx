@@ -83,7 +83,7 @@ export default class MemberList extends Component {
 
   async getMemberList () {
     try {
-      const results = await membershipApi(HTTP_GET, `/members`)
+      const results = await membershipApi(HTTP_GET, `/member/list`)
       this.setState({members: results})
     } catch (err) {
       return logError('Error loading test', err)

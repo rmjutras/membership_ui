@@ -5,8 +5,8 @@ import {connect} from 'react-redux'
 import {login, logout} from './redux/actions/authActions'
 
 import App from './components/App'
-import MemberList from './components/membership/MemberList'
-import PlaceHolder from './components/membership/PlaceHolder'
+import MemberList from './components/admin/MemberList'
+import PlaceHolder from './components/membership/Member'
 
 import { USE_AUTH } from './config'
 import {UserAuthWrapper} from 'redux-auth-wrapper'
@@ -36,8 +36,8 @@ class Routes extends Component {
           <Route path="logout" onEnter={() => this.props.logout()} />
 
           <Route component={Authenticated}>
-            <Route path="members" component={MemberList} />
-            <Route path="placeholder" component={PlaceHolder} />
+            <Route path="members" component={PlaceHolder} />
+            <Route path="admin" component={MemberList} />
           </Route>
         </Route>
       </Router>
