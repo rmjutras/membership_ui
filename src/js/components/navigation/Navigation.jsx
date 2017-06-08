@@ -39,6 +39,12 @@ class Navigation extends Component {
           <LinkContainer to="/members">
             <NavItem eventKey="members">Member</NavItem>
           </LinkContainer>
+          <LinkContainer to="/committees">
+          <NavItem eventKey="committees">Committees</NavItem>
+        </LinkContainer>
+          <LinkContainer to="/elections">
+            <NavItem eventKey="elections">Elections</NavItem>
+          </LinkContainer>
           { admin &&
             <LinkContainer to="/admin">
               <NavItem eventKey="admin">Admin</NavItem>

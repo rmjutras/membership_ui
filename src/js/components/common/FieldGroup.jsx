@@ -49,7 +49,7 @@ export default class FieldGroup extends Component {
         (opt, ind) => {
           const key = optionMap ? ind : opt
           optionList.push(
-            <option key={opt} value={key}>{opt}</option>
+            <option key={key} value={key}>{opt}</option>
           )
         }
       )

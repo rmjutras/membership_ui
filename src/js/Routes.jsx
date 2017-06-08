@@ -6,7 +6,10 @@ import {login, logout} from './redux/actions/authActions'
 
 import App from './components/App'
 import MemberList from './components/admin/MemberList'
-import PlaceHolder from './components/membership/Member'
+import Member from './components/membership/Member'
+import Committees from './components/committee/Committees'
+import Elections from './components/election/Elections'
+import ElectionDetail from './components/election/ElectionDetail'
 
 import { USE_AUTH } from './config'
 import {UserAuthWrapper} from 'redux-auth-wrapper'
@@ -36,8 +39,11 @@ class Routes extends Component {
           <Route path="logout" onEnter={() => this.props.logout()} />
 
           <Route component={Authenticated}>
-            <Route path="members" component={PlaceHolder} />
+            <Route path="members" component={Member} />
+            <Route path="committees" component={Committees} />
             <Route path="admin" component={MemberList} />
+            <Route path="elections" component={Elections} />
+            <Route path="elections/:electionId" component={ElectionDetail} />
           </Route>
         </Route>
       </Router>
